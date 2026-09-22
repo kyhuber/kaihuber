@@ -3,6 +3,7 @@
   --fg: #111111;
   --muted: #555555;
   --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.1);
   --card-bg: #f5f5f5;
   --card-border: #e0e0e0;
 }
@@ -13,6 +14,7 @@
     --fg: #f5f5f5;
     --muted: #aaaaaa;
     --accent: #60a5fa;
+    --accent-soft: rgba(96, 165, 250, 0.15);
     --card-bg: #1a1a1a;
     --card-border: #2a2a2a;
   }
@@ -36,14 +38,19 @@ main {
   padding: 3rem 1.25rem;
 }
 
-h1 {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+.hero {
+  margin-bottom: 2.5rem;
 }
 
-.intro {
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+}
+
+.tagline {
   color: var(--muted);
-  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  margin: 0;
 }
 
 .apps {
@@ -56,25 +63,85 @@ h1 {
 }
 
 .app {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   border: 1px solid var(--card-border);
   background: var(--card-bg);
-  border-radius: 10px;
-  padding: 1.25rem;
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.app a {
+.app:hover,
+.app:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.25);
+}
+
+.app-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent-soft);
   color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-name {
   font-size: 1.1rem;
   font-weight: 600;
-  text-decoration: none;
+  color: var(--accent);
 }
 
-.app a:hover {
-  text-decoration: underline;
-}
-
-.app p {
-  margin: 0.4rem 0 0;
+.app-desc {
+  margin-top: 0.25rem;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.site-footer {
+  margin-top: 2.5rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.15s ease;
+}
+
+.github-link:hover,
+.github-link:focus-visible {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app {
+    transition: none;
+  }
+
+  .app:hover,
+  .app:focus-visible {
+    transform: none;
+  }
 }
