@@ -39,12 +39,32 @@ main {
 }
 
 .hero {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   margin-bottom: 2.5rem;
+}
+
+.hero-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 35%;
+  border: 2px solid var(--card-border);
+  flex-shrink: 0;
 }
 
 .hero h1 {
   font-size: 2rem;
   margin: 0 0 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .tagline {
