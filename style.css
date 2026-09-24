@@ -137,6 +137,25 @@ main {
   font-size: 0.95rem;
 }
 
+.app-arrow {
+  flex-shrink: 0;
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.18s ease, stroke 0.18s ease;
+}
+
+.app:hover .app-arrow,
+.app:focus-visible .app-arrow {
+  transform: translateX(3px);
+  stroke: var(--accent);
+}
+
 .site-footer {
   margin-top: 2.5rem;
 }
@@ -163,6 +182,15 @@ main {
 
   .app:hover,
   .app:focus-visible {
+    transform: none;
+  }
+
+  .app-arrow {
+    transition: none;
+  }
+
+  .app:hover .app-arrow,
+  .app:focus-visible .app-arrow {
     transform: none;
   }
 }
