@@ -1,0 +1,4 @@
+# Keep internal project docs out of the published site (they stay in the repo).
+exclude:
+  - CLAUDE.md
+  - ROADMAP.md
