@@ -26,8 +26,9 @@ This repo is also the seed of a longer-term project — see `ROADMAP.md`. Don't 
 | `7929` | `Vercel` | `https://7929.kaihuber.dev/` | `Web app built on a database used to track tasks that need to be done around my house` |
 | `Date Kyle` | `GitHub Pages` | `https://date.kaihuber.dev/` | `Fun site that showcases pictures of me and details about me in the interest of attracting a partner.` |
 | `Mountaintop` | `GitHub Pages` | `https://mountaintop.kaihuber.dev/` | `Browser version of the Huber brothers' trick-taking card game, played over 11 rounds against computer opponents (source: github.com/kyhuber/mountaintop)` |
+| `Run with Kai` | `GitHub Pages` | `https://run.kaihuber.dev/` | `Personal running-training dashboard: the current block's schedule, logged runs synced from Health, and pace/mileage trends. Public, no login (source: github.com/kyhuber/run-with-kai)` |
 
-DNS for all four subdomains is already live and working. This repo doesn't touch that setup — it only needs to be deployed and pointed at the root/apex domain, which uses an A record (or the host's ALIAS/ANAME equivalent) rather than a CNAME, since apex domains can't use CNAME.
+DNS for all five subdomains is already live and working. This repo doesn't touch that setup — it only needs to be deployed and pointed at the root/apex domain, which uses an A record (or the host's ALIAS/ANAME equivalent) rather than a CNAME, since apex domains can't use CNAME.
 
 ## Hosting for this repo
 
@@ -41,6 +42,7 @@ DNS lives at GoDaddy: four A records on `@` (`185.199.108.153`, `185.199.109.153
 - **Hero photo:** `images/kyle.jpg`, reused from the Date Kyle site (`date.kaihuber.dev/photos/cover.jpg`).
 - **No app screenshots:** Cash Out and 7929 are login-gated, so a screenshot would just be a login form. Tiles use small inline SVG icons instead.
 - **New tiles:** copy an existing `<li>` in `index.html`, keep the same stroke-style inline SVG icon (24×24 viewBox), and add a row to the apps table above.
+- **Run with Kai is linked, not copied in:** it stays in its own repo (`kyhuber/run-with-kai`, GitHub Pages) at `run.kaihuber.dev` — same wiring as `date` and `mountaintop` (a `run` CNAME → `kyhuber.github.io.` at GoDaddy, plus the custom domain in that repo's Pages settings). Its data changes there, so a copy here would go stale. It's public by design (training stats, no login) — nothing to gate.
 - **Internal docs stay off the site:** `_config.yml` excludes `CLAUDE.md` and `ROADMAP.md` from the GitHub Pages build (otherwise they're served at `/CLAUDE.md` etc.). Add any new internal docs to that list.
 
 ## Conventions
