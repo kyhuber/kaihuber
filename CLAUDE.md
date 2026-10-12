@@ -27,8 +27,9 @@ This repo is also the seed of a longer-term project — see `ROADMAP.md`. Don't 
 | `Date Kyle` | `GitHub Pages` | `https://date.kaihuber.dev/` | `Fun site that showcases pictures of me and details about me in the interest of attracting a partner.` |
 | `Mountaintop` | `GitHub Pages` | `https://mountaintop.kaihuber.dev/` | `Browser version of the Huber brothers' trick-taking card game, played over 11 rounds against computer opponents (source: github.com/kyhuber/mountaintop)` |
 | `Run with Kai` | `GitHub Pages` | `https://run.kaihuber.dev/` | `Personal running-training dashboard: the current block's schedule, logged runs synced from Health, and pace/mileage trends. Public, no login (source: github.com/kyhuber/run-with-kai)` |
+| `Bee Solver` | `GitHub Pages` | `https://bee-solver.kaihuber.dev/` | `Solver for the NYT Spelling Bee puzzle, built with Claude (source: github.com/kyhuber/bee-solver-claude)` |
 
-DNS for all five subdomains is already live and working. This repo doesn't touch that setup — it only needs to be deployed and pointed at the root/apex domain, which uses an A record (or the host's ALIAS/ANAME equivalent) rather than a CNAME, since apex domains can't use CNAME.
+DNS for all six subdomains is already live and working. This repo doesn't touch that setup — it only needs to be deployed and pointed at the root/apex domain, which uses an A record (or the host's ALIAS/ANAME equivalent) rather than a CNAME, since apex domains can't use CNAME.
 
 ## Hosting for this repo
 
