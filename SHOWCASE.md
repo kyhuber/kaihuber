@@ -19,9 +19,9 @@ Kyle wants kaihuber.dev to do more than list links: to **showcase the work Kyle 
 ## 3. Where the site is now
 
 - One static page: `index.html` (~7 KB), `style.css` (~3 KB), `favicon.svg`, `images/kyle.jpg`. No JS, no framework, no build step.
-- Layout: a 640 px column — hero (photo, name, tagline), then one tile per app. Tagline: "Kyle and AI (aka KAI) build small things that solve small problems and put them on the internet."
+- Layout: a 640 px column — hero (photo, name, tagline), then app tiles in three sections (Try these / See what I've been up to / In the workshop). Tagline: "Kyle and AI (aka KAI) build small things that solve small problems and put them on the internet."
 - Style tokens in `style.css`: light `#fff` / dark `#0f0f0f` via `prefers-color-scheme`, accent `#2563eb` / `#60a5fa`, system font stack. A tile is `<li><a class="app">` with a 24×24 stroke-style inline SVG icon — copy an existing `<li>`.
-- Six tiles: Cash Out, 7929, Date Kyle, Mountaintop, Run with Kai, Bee Solver (table in `CLAUDE.md`).
+- Six tiles: Bee Solver and Mountaintop (Try these), Date Kyle and Run with Kai (See what I've been up to), Cash Out and 7929 (In the workshop: unlinked "In progress" cards, because both are login-gated). Table and section rules are in `CLAUDE.md`.
 - Hosting: GitHub Pages from `main` root, apex via A records, `CNAME` file. `_config.yml` excludes internal docs from the published site; this file is listed there. Any further internal doc must be added too.
 - **The gap:** tiles say *what* each app is. Nothing says *why it exists, how it was made, what went wrong, or what it proves.* That is where the interesting material is (§5).
 
