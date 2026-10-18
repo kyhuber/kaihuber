@@ -4,15 +4,15 @@ Context for Claude Code in this repository. This file is loaded automatically ev
 
 ## What this repo is
 
-The source for a static personal landing page hosted at the root of `kaihuber.dev`. It's a small portfolio-style page — name, photo, a one-line tagline, and tiles linking out to the apps that already live on subdomains of the same domain, plus a GitHub link. The goal is a page the owner is proud of and can easily show off to people curious what they've been building — not to generate traffic.
+The source for a static personal landing page hosted at the root of `kaihuber.dev`. It's a small portfolio-style page — name, photo, a one-line tagline, and tiles for the apps that live on subdomains of the same domain, plus a GitHub link. The goal is a page the owner is proud of and can easily show off to people curious what they've been building — not to generate traffic.
 
 This repo is also the seed of a longer-term project — see `ROADMAP.md`. Don't build toward that vision yet. It isn't in scope until Phase 2.
 
 ## Current phase: Phase 1 — Landing page
 
 **In scope:**
-- A single static page (HTML + CSS, no framework, no build step): hero (name, photo, tagline), a tile per app, and a GitHub link
-- Links out to each of the subdomain apps below
+- A single static page (HTML + CSS, no framework, no build step): hero (name, photo, tagline), app tiles grouped into sections (see Decisions), and a GitHub link
+- Links out to the subdomain apps below that visitors can actually use
 - Basic responsive layout — this will be viewed on phones — and light/dark via `prefers-color-scheme`
 - Small static assets and page metadata: the hero photo, favicon, link-preview (Open Graph) tags
 
@@ -20,14 +20,14 @@ This repo is also the seed of a longer-term project — see `ROADMAP.md`. Don't 
 
 ## The apps this page links to
 
-| App | Host | Subdomain | One-line description |
-|---|---|---|---|
-| `Cash Out` | `Vercel` | `https://cashout.kaihuber.dev/` | `Used to track information about work shifts, including hours worked and tips, to forecast paycheck amounts` |
-| `7929` | `Vercel` | `https://7929.kaihuber.dev/` | `Web app built on a database used to track tasks that need to be done around my house` |
-| `Date Kyle` | `GitHub Pages` | `https://date.kaihuber.dev/` | `Fun site that showcases pictures of me and details about me in the interest of attracting a partner.` |
-| `Mountaintop` | `GitHub Pages` | `https://mountaintop.kaihuber.dev/` | `Browser version of the Huber brothers' trick-taking card game, played over 11 rounds against computer opponents (source: github.com/kyhuber/mountaintop)` |
-| `Run with Kai` | `GitHub Pages` | `https://run.kaihuber.dev/` | `Personal running-training dashboard: the current block's schedule, logged runs synced from Health, and pace/mileage trends. Public, no login (source: github.com/kyhuber/run-with-kai)` |
-| `Bee Solver` | `GitHub Pages` | `https://bee-solver.kaihuber.dev/` | `Solver for the NYT Spelling Bee puzzle, built with Claude (source: github.com/kyhuber/bee-solver-claude)` |
+| App | Section | Host | Subdomain | One-line description |
+|---|---|---|---|---|
+| `Cash Out` | Workshop | `Vercel` | `https://cashout.kaihuber.dev/` | `Used to track information about work shifts, including hours worked and tips, to forecast paycheck amounts` |
+| `7929` | Workshop | `Vercel` | `https://7929.kaihuber.dev/` | `Web app built on a database used to track tasks that need to be done around my house` |
+| `Date Kyle` | Up to | `GitHub Pages` | `https://date.kaihuber.dev/` | `Fun site that showcases pictures of me and details about me in the interest of attracting a partner.` |
+| `Mountaintop` | Try | `GitHub Pages` | `https://mountaintop.kaihuber.dev/` | `Browser version of the Huber brothers' trick-taking card game, played over 11 rounds against computer opponents (source: github.com/kyhuber/mountaintop)` |
+| `Run with Kai` | Up to | `GitHub Pages` | `https://run.kaihuber.dev/` | `Personal running-training dashboard: the current block's schedule, logged runs synced from Health, and pace/mileage trends. Public, no login (source: github.com/kyhuber/run-with-kai)` |
+| `Bee Solver` | Try | `GitHub Pages` | `https://bee-solver.kaihuber.dev/` | `Solver for the NYT Spelling Bee puzzle, built with Claude (source: github.com/kyhuber/bee-solver-claude)` |
 
 DNS for all six subdomains is already live and working. This repo doesn't touch that setup — it only needs to be deployed and pointed at the root/apex domain, which uses an A record (or the host's ALIAS/ANAME equivalent) rather than a CNAME, since apex domains can't use CNAME.
 
@@ -42,7 +42,11 @@ DNS lives at GoDaddy: four A records on `@` (`185.199.108.153`, `185.199.109.153
 - **Contact:** GitHub link only (`github.com/kyhuber`). No public email address and no contact form — a form would need a backend, which is out of scope.
 - **Hero photo:** `images/kyle.jpg`, reused from the Date Kyle site (`date.kaihuber.dev/photos/cover.jpg`).
 - **No app screenshots:** Cash Out and 7929 are login-gated, so a screenshot would just be a login form. Tiles use small inline SVG icons instead.
-- **New tiles:** copy an existing `<li>` in `index.html`, keep the same stroke-style inline SVG icon (24×24 viewBox), and add a row to the apps table above.
+- **Three sections, by who can use the app:**
+  - **Try these:** open to anyone, low barrier, fun (Bee Solver, Mountaintop).
+  - **See what I've been up to:** public and worth a look, but not a tool for the visitor (Date Kyle, Run with Kai). The section is a general invitation to look around. Don't frame it as "built for me."
+  - **In the workshop:** apps the owner uses that aren't open to others yet (Cash Out, 7929). These cards are **not linked**, because visitors would only hit a login screen. They're a non-link `div.app.app-soon` with an "In progress" badge. Don't promise a date. There's no waitlist or sign-up form either, since that needs a backend.
+- **New tiles:** copy an existing `<li>` from the right section in `index.html`, keep the same stroke-style inline SVG icon (24×24 viewBox), and add a row to the apps table above. When a workshop app opens to sign-ups, change its `div` back to a linked `<a class="app" href="…">` with the arrow and move it to the right section.
 - **Run with Kai is linked, not copied in:** it stays in its own repo (`kyhuber/run-with-kai`, GitHub Pages) at `run.kaihuber.dev` — same wiring as `date` and `mountaintop` (a `run` CNAME → `kyhuber.github.io.` at GoDaddy, plus the custom domain in that repo's Pages settings). Its data changes there, so a copy here would go stale. It's public by design (training stats, no login) — nothing to gate.
 - **Internal docs stay off the site:** `_config.yml` excludes `CLAUDE.md` and `ROADMAP.md` from the GitHub Pages build (otherwise they're served at `/CLAUDE.md` etc.). Add any new internal docs to that list.
 
